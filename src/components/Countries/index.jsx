@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import CardCountry from "../CardCountry"
 import { Container } from "./styles"
 
 const Countries = () => {
@@ -18,7 +19,7 @@ const Countries = () => {
     <Container>
       {
         countries && countries.map(country => (
-          <p>{country.name}</p>
+          <CardCountry key={country.name} data={country}/>
         ))
       }
     </Container>

@@ -10,6 +10,7 @@ export const Container = styled.header`
         font-weight: 800;
         font-size: 30px;
         line-height: 41px;
+        color: rgb(17, 21, 23);
     }
     button{
         background: transparent;
@@ -20,6 +21,7 @@ export const Container = styled.header`
         font-weight: 600;
         font-size: 16px;
         line-height: 22px;
+        color: rgb(17, 21, 23);
         cursor: pointer;
         svg{
             width: 25px;
