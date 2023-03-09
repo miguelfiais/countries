@@ -4,12 +4,18 @@ import { Container } from "./styles"
 
 const Countries = () => {
 
-  const {countries} = useCountry()
+  const {countries, search} = useCountry()
+
+  const filteredCountries = search.length > 0 
+  ? countries.filter(country => country.name.common.toLowerCase().includes(search))
+  : [];
 
   return (
     <Container>
       {
-        countries.length ? countries.map(country => (
+        search.length > 0 ? filteredCountries.map(country => (
+          <CardCountry key={country.name.common} data={country}/>
+        )) :  countries.length ? countries.map(country => (
           <CardCountry key={country.name.common} data={country}/>
         )) : (
           <h1>Loading...</h1>
