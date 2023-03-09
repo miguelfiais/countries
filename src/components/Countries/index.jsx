@@ -5,22 +5,23 @@ import { Container } from "./styles"
 
 const Countries = () => {
 
-    const [countries, setCountries] = useState([])
+  const [countries, setCountries] = useState([])
 
-    useEffect(() => {
-        async function loadCountries(){
-            const {data} = await axios.get("https://restcountries.com/v2/all")
-            setCountries(data)
-        }
-        loadCountries()
-    },[])
+  useEffect(() => {
+    async function loadCountries(){
+      await axios.get("https://restcountries.com/v3.1/all").then(response => setCountries(response.data))
+    }
+  loadCountries()
+  },[])
 
   return (
     <Container>
       {
-        countries && countries.map(country => (
-          <CardCountry key={country.name} data={country}/>
-        ))
+        countries.length ? countries.map(country => (
+          <CardCountry key={country.name.common} data={country}/>
+        )) : (
+          <h1>Loading...</h1>
+        )
       }
     </Container>
   )
