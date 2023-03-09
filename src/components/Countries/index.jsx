@@ -1,18 +1,10 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
+import { useCountry } from "../../hooks/CountryContext"
 import CardCountry from "../CardCountry"
 import { Container } from "./styles"
 
 const Countries = () => {
 
-  const [countries, setCountries] = useState([])
-
-  useEffect(() => {
-    async function loadCountries(){
-      await axios.get("https://restcountries.com/v3.1/all").then(response => setCountries(response.data))
-    }
-  loadCountries()
-  },[])
+  const {countries} = useCountry()
 
   return (
     <Container>
