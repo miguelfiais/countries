@@ -6,6 +6,7 @@ const CountryContext = createContext({})
 export const CountryProvider = ({ children }) => {
 
     const [countries, setCountries] = useState([])
+    const [countriesRegion, setCountriesRegion] = useState([])
     const [search, setSearch] = useState('')
     
     useEffect(() => {
@@ -15,16 +16,13 @@ export const CountryProvider = ({ children }) => {
     loadCountries()
     },[]) 
 
-    async function filteredRegion(region){
-      if(region){
-        await axios.get(`https://restcountries.com/v3.1/region/${region}`).then(response => setCountries(response.data))
-      } else {
-        await axios.get("https://restcountries.com/v3.1/all").then(response => setCountries(response.data))
-      }
+    function filteredRegion(region){
+      const filterRegion = countries.filter(country => country.region.includes(region))
+      setCountriesRegion(filterRegion)
     }
     
   return (
-    <CountryContext.Provider value={{countries, setCountries, search, setSearch, filteredRegion}}>
+    <CountryContext.Provider value={{countries, setCountries, search, setSearch, filteredRegion, countriesRegion}}>
         {children}
     </CountryContext.Provider>
   )

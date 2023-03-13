@@ -4,10 +4,10 @@ import { Container } from "./styles"
 
 const Countries = () => {
 
-  const {countries, search} = useCountry()
+  const {countries, search, countriesRegion} = useCountry()
 
   const filteredCountries = search.length > 0 
-  ? countries.filter(country => country.name.common.toLowerCase().includes(search))
+  ? countriesRegion.filter(country => country.name.common.toLowerCase().includes(search.toLowerCase()))
   : [];
 
   return (
@@ -15,7 +15,9 @@ const Countries = () => {
       {
         search.length > 0 ? filteredCountries.map(country => (
           <CardCountry key={country.name.common} data={country}/>
-        )) :  countries.length ? countries.map(country => (
+        )) :  countriesRegion.length ? countriesRegion.map(country => (
+          <CardCountry key={country.name.common} data={country}/>
+        )) : countries.length ? countries.map(country => (
           <CardCountry key={country.name.common} data={country}/>
         )) : (
           <h1>Loading...</h1>
