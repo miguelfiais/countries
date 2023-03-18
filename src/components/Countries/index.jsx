@@ -6,9 +6,13 @@ const Countries = () => {
 
   const {countries, search, countriesRegion} = useCountry()
 
-  const filteredCountries = search.length > 0 
-  ? countriesRegion.filter(country => country.name.common.toLowerCase().includes(search.toLowerCase()))
-  : [];
+  let filteredCountries
+  countriesRegion.length > 0 ? 
+  filteredCountries = search.length > 0 
+  && countriesRegion.filter(country => country.name.common.toLowerCase().includes(search.toLowerCase()))
+  : filteredCountries = search.length > 0 
+  && countries.filter(country => country.name.common.toLowerCase().includes(search.toLowerCase()));
+  
 
   return (
     <Container>
