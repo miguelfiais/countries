@@ -42,4 +42,4 @@ $ npm install
 $ npm run dev
 ```
 
-Feito com ♥ por Miguel Fiais :wave: [Entre em contato!](https://www.linkedin.com/in/miguel-fiais/)
+Done with ♥ for Miguel Fiais :wave: [Entre em contato!](https://www.linkedin.com/in/miguel-fiais/)
