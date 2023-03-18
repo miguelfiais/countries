@@ -3,8 +3,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { HiArrowNarrowLeft } from "react-icons/hi";
 import Header from "../../components/Header"
-import Button from "../../components/Button"
-import { BordersContainer, Container, InformationContainer, InnerContainer, ListsContainer } from "./styles"
+import { BordersContainer, ButtonStyles, Container, InformationContainer, InnerContainer, ListsContainer } from "./styles"
 
 const Country = () => {
     const navigate = useNavigate()
@@ -28,10 +27,10 @@ const Country = () => {
     <>
         <Header />
         <Container>
-            <Button onClick={() => navigate('/')}>
+            <ButtonStyles onClick={() => navigate('/')}>
                 <HiArrowNarrowLeft />
                 Back
-            </Button>
+            </ButtonStyles>
             { country ? (
                 <InnerContainer>
                     <img src={country.flags.png} alt="country-flag" />
@@ -53,15 +52,19 @@ const Country = () => {
                         </ListsContainer>
                         <BordersContainer>
                             {
-                                country.borders && <h4>Border Countries:</h4>
+                                country.borders && (
+                                    <>
+                                        <h4>Border Countries:</h4>
+                                        <div>
+                                        {
+                                            country.borders.map(border => (
+                                                <ButtonStyles key={border} onClick={() => goCountry(border)}>{border}</ButtonStyles>
+                                            ))
+                                        }
+                                        </div>
+                                    </>
+                                ) 
                             }
-                            <div>
-                            {
-                                country.borders && country.borders.map(border => (
-                                    <Button key={border} onClick={() => goCountry(border)}>{border}</Button>
-                                ))
-                            }
-                            </div>
                         </BordersContainer>
                     </InformationContainer>
                 </InnerContainer>

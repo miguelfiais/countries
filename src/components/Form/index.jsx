@@ -25,7 +25,6 @@ const Form = () => {
           id="demo-simple-select-autowidth"
           value={region}
           onChange={handleChange}
-          autoWidth
           label="Region"
         >
           <MenuItem value="">

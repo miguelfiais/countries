@@ -28,5 +28,20 @@ export const Container = styled.header`
             height: auto;
         }
     }
+    @media screen and (max-width: 1000px){
+        h1{
+            font-size: 24px;
+            line-height: 33px;
+        }        
+    }
+    @media screen and (max-width: 600px){
+        h1{
+            font-size: 20px;
+            line-height: 27px;
+        }        
+        button span{
+            display: none;
+        }
+    }
     
 `

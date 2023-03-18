@@ -32,4 +32,21 @@ export const Container = styled.div`
         transform: scale(1.05);
         transition: 0.2s;
     }
+    @media screen and (max-width: 330px){
+        img{
+            max-width: 260px;
+            height: 130px;
+        }
+        div{
+            h4{
+                font-size: 16px;
+                line-height: 22px;
+            }
+            p{
+                font-size: 12px;
+                line-height: 16px;
+            }
+        }
+        
+    }
 `

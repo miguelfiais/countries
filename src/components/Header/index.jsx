@@ -7,7 +7,7 @@ const Header = () => {
         <h1>Where in the world?</h1>
         <button>
             <MdOutlineDarkMode />
-            Dark Mode
+            <span>Dark Mode</span>
         </button>
     </Container>
   )
