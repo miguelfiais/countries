@@ -12,13 +12,18 @@ const Country = () => {
 
     useEffect(() => {
         function getCountry () {
-            axios.get(`https://restcountries.com/v3.1/name/${name}?fullText=true`).then(response => setCountry(response.data[0]))
+            if(name.length > 3){
+                axios.get(`https://restcountries.com/v3.1/name/${name}?fullText=true`).then(response => setCountry(response.data[0]))
+            }
+            else{
+                axios.get(`https://restcountries.com/v3.1/alpha/${name}`).then(response => setCountry(response.data[0]))
+            }
         }
         getCountry()
     }, [name])
 
   function goCountry (country) {
-    navigate(`/country/${country.toLowerCase()}`)
+    navigate(`/country/${country}`)
   }
 
   return (
