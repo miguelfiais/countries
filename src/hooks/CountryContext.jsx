@@ -10,8 +10,8 @@ export const CountryProvider = ({ children }) => {
     const [search, setSearch] = useState('')
     
     useEffect(() => {
-    async function loadCountries(){
-        await axios.get("https://restcountries.com/v3.1/all").then(response => setCountries(response.data))
+      function loadCountries(){
+        axios.get("https://restcountries.com/v3.1/all").then(response => setCountries(response.data))
     }
     loadCountries()
     },[]) 

@@ -11,10 +11,8 @@ const Country = () => {
     const [country, setCountry] = useState()
 
     useEffect(() => {
-        async function getCountry () {
-            await axios.get(`https://restcountries.com/v3.1/name/${name}`).then(response => {
-                setCountry(response.data[0]) 
-            })
+        function getCountry () {
+            axios.get(`https://restcountries.com/v3.1/name/${name}?fullText=true`).then(response => setCountry(response.data[0]))
         }
         getCountry()
     }, [name])
@@ -46,8 +44,11 @@ const Country = () => {
                             </ul>
                             <ul className="second-list">
                                 <li>Top Level Domain: <span>{country.tld}</span></li>
-                                <li>Currencies:</li>
-                                <li>Languages:</li>
+                                <li>Currencies: <span>{Object.values(country.currencies)[0].name}</span></li>
+                                <li>Languages: {(
+                                    Object.values(country.languages)).map(lang => <span key={lang}>{lang} </span>
+                                )}
+                                </li>
                             </ul>
                         </ListsContainer>
                         <BordersContainer>
